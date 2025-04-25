@@ -1,0 +1,16 @@
+include ../vars/vars
+
+.container
+	.video-grid(x-data="videos")
+		each i, index in videos
+			.video-item(data-video=i.url data-video-index=index+1)
+				.video-item__img
+					iframe(src=i.url)
+					.btn.btn--primary.video-item__btn(@click=`playVideo(${index})`)
+						span Воспроизвести
+				.video-item__content
+					.video-item__title.t5.fsb=i.title
+
+
+
+

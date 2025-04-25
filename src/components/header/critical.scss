@@ -1,0 +1,47 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+body {
+	background-color: var(--black_bg_black);
+}
+
+body.overflow {
+	overflow: hidden;
+	width: calc(100vw - var(--scrollWidth));
+
+
+}
+
+
+.header{
+	position: sticky;
+	top: 0;
+	border-bottom: 1px solid var(--border);
+	background-color: #fff;
+	z-index: 100;
+
+	&-inner{
+		display: flex;
+		align-items: center;
+		gap: 2.4rem;
+		height: 8rem;
+		padding: 1rem 0;
+		&__logo{
+			img{
+				height: 5rem;
+			}
+		}
+	}
+
+	&-menu{
+		margin-left: 6rem;
+		display: flex;
+		gap: 2.4rem;
+		&__item{
+
+		}
+	}
+
+	&-contacts{
+		margin-left: auto;
+	}
+}

@@ -1,0 +1,25 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+[x-cloak] {
+  display: none !important;
+}
+
+.overlay {
+  background: #000;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  // backdrop-filter: blur(5px);
+  // -webkit-backdrop-filter: blur(5px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  &.visible {
+    opacity: 0.6;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,52 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.footer {
+	margin-top: var(--section-margin);
+	background: #242424;
+	color: var(--bg-card);
+	padding: calc(var(--section-margin) / 2) 0;
+	a{
+		color: var(--bg-card);
+	}
+	&__title{
+		font-size: 2.2rem;
+		margin-bottom: 1.2rem;
+	}
+}
+
+.footer-inner{
+	display: flex;
+	justify-content: space-between;
+	&__left{
+		font-weight: 600;
+		font-size: 2.4rem;
+	}
+
+}
+
+.footer-social{
+	display: flex;
+	gap: 1.2rem;
+	margin-bottom: 1.2rem;
+	&__item{
+		fill: var(--bg-card);
+		&:hover {
+			@media (hover: hover) {
+				cursor: pointer;
+				fill: var(--base-color-hover);
+
+			}
+		}
+	}
+}
+
+.footer-link{
+	margin-bottom: 1.2rem;
+	display: flex;
+	gap: 0.6rem;
+	fill: var(--bg-card);
+	svg{
+		max-width: 2rem;
+		max-height: 2rem;
+	}
+}

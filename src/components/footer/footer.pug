@@ -1,0 +1,30 @@
++include-style('footer')
++include-script('footer')
+
+
+footer.footer
+	.container
+		.footer-inner
+			.footer-inner__left
+				p ООО «ЭлитГрадСтрой»
+			.footer-inner__right
+				.footer__title Контакты
+				.footer-social
+					a(href="#").footer-social__item
+						+icon('i-tg')(style="width:2.4rem;height:2.4rem")
+
+
+					a(href="#").footer-social__item
+						+icon('i-vb')(style="width:2.4rem;height:2.4rem")
+
+
+
+				a(href="tel:+375333003334").footer-link
+					+icon('i-phone')(style="width:2.4rem;height:2.4rem")
+
+					span +375 29 380-97-36 (А1)
+				a(href="tel:+375333003334").footer-link
+					+icon('i-phone')(style="width:2.4rem;height:2.4rem")
+					span +375 33 308-12-44  (МТС)
+
+
