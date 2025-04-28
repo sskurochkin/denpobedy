@@ -28,10 +28,10 @@ html(lang='ru-RU')
 		link(rel="icon" type="image/png" href="/html/favicons/apple-touch-icon-114x114.png" sizes="114x114")
 		link(rel="apple-touch-icon" href="/html/favicons/apple-touch-icon-114x114.png" sizes="180x180")
 
-		link(rel="preload" href="./assets/fonts/inter-v8-latin_cyrillic-ext-500.woff2" as="font" type="font/woff2" crossorigin="anonymous")
-		link(rel="preload" href="./assets/fonts/inter-v8-latin_cyrillic-ext-600.woff2" as="font" type="font/woff2" crossorigin="anonymous")
-		link(rel="preload" href="./assets/fonts/inter-v8-latin_cyrillic-ext-700.woff2" as="font" type="font/woff2" crossorigin="anonymous")
-		link(rel="preload" href="./assets/fonts/inter-v8-latin_cyrillic-ext-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+		link(rel="preload" href="./assets/fonts/subset-Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+
+		link(rel="preload" href="./assets/fonts/subset-Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+		link(rel="preload" href="./assets/fonts/subset-Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous")
 
 		// Стили для всех страниц
 		link(href="./critical.css" rel="stylesheet")
@@ -45,14 +45,14 @@ html(lang='ru-RU')
 	)
 
 		.wrapper
-			//-include ../components/header/header
+			include ../components/header/header
 
 
 
 			main.main
 				block main
 
-			//-include ../components/footer/footer
+
 
 
 		script(src="./assets/js/vendor/fancybox.min.js" defer)

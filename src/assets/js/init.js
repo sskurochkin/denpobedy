@@ -100,6 +100,8 @@ const uiInits = {
 	fancy: function (){
 		window.addEventListener('alpine:init', function () {
 
+
+
 			Alpine.data('videos', () => ({
 				options: {
 					rootMargin: '100px',
@@ -112,6 +114,58 @@ const uiInits = {
 				init() {
 					this.videos = [...this.$root.querySelectorAll('[data-video-index]')]
 					this.checkUrl()
+					this.sliders()
+				},
+
+				sliders(){
+					const sliders = document.querySelectorAll('.js-splide-video')
+
+
+					const config = {
+						root: null, // Sets the framing element to the viewport
+						rootMargin: "200px",
+						threshold: 0.5
+					}
+
+
+					const sliderObserver = new IntersectionObserver((entries, observer) =>{
+						entries.forEach(el=>{
+							if(el.isIntersecting){
+								if(el.target.classList.contains('inited')) {
+									return
+								}
+
+								let splideRoof = new Splide(el.target, {
+									type: 'fade',
+									rewind: true,
+									speed: 1000,
+									autoplay: true, // Автопрокрутка
+									interval: 3000,
+									drag: false,
+									pagination: false,
+									arrows: false,
+									breakpoints: {
+										990:{
+
+										}
+									}
+
+								}).mount()
+								el.target.classList.add('inited');
+
+							}
+						}, config)
+					})
+
+
+					sliders.forEach(el=>{
+
+						sliderObserver.observe(el)
+					})
+
+
+
+
 				},
 
 				playVideo(index){

@@ -1,16 +1,40 @@
 include ../vars/vars
 
-.container
+.page-inner
+	.page-bg
+		.page-bg__left
+		.page-bg__right
+	.top-line
+		.top-line__logo
+			img(src=PATH + 'images/theatre.png' loading="lazy")
+		.top-line__text
+			p <b>Дорогие друзья!</b>
+			p В честь Дня Победы мы подготовили для вас особый подарок – архив концертных выступлений, посвященных этому великому празднику. На этом сайте вы сможете окунуться в атмосферу памятных мероприятий, увидеть яркие номера, проникновенные песни и трогательные моменты концертов, проходивших с 2014 года.
+			p <b>Сохраним память о героях и их подвиге вместе!</b>
+
 	.video-grid(x-data="videos")
 		each i, index in videos
 			.video-item(data-video=i.url data-video-index=index+1)
-				.video-item__img
-					iframe(src=i.url)
-					.btn.btn--primary.video-item__btn(@click=`playVideo(${index})`)
-						span Воспроизвести
-				.video-item__content
-					.video-item__title.t5.fsb=i.title
+				.video-item__head
+					.video-item__img(@click=`playVideo(${index})`)
+						.video-item__btn
+							img(src=PATH + 'images/play.svg' loading="lazy")
+						+splide({
+							mod: 'js-splide-video video-slider'
+						})
+							each x, z in [1,2]
+								li.splide__slide
+									img(src=PATH + `images/video-${index+1}/${x}.jpg` loading="lazy")
+					.video-item__content
+						.video-item__title=i.title
+				.video-item__footer(x-data="{open: false}" @click.outside="open=false" :class="open && 'active'")
+					.video-item__trigger(@click="open=!open")
+						span подробнее...
+						<svg class="icon" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.5 13L14.8612 0.25H0.138784L7.5 13Z" fill="white"/>
+						</svg>
+
+					.video-item__list(x-show="open" x-transition)=i.title
 
 
-
-
+	include ../footer/footer

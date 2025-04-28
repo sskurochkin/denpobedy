@@ -1,29 +1,23 @@
 
 @font-face {
-  font-family: Inter;
-  src: url('./assets/fonts/Inter-Light') format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 400;
+	src: url('./assets/fonts/subset-Montserrat-Regular.woff2') format("woff2");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 800;
+	src: url('./assets/fonts/subset-Montserrat-ExtraBold.woff2') format("woff2");
+	font-display: swap;
 }
 @font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  src: url('./assets/fonts/inter-v8-latin_cyrillic-ext-500.woff2') format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  src: url('./assets/fonts/inter-v8-latin_cyrillic-ext-600.woff2') format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 700;
-  src: url('./assets/fonts/inter-v8-latin_cyrillic-ext-700.woff2') format("woff2");
-  font-display: swap;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 700;
+	src: url('./assets/fonts/subset-Montserrat-Bold.woff2') format("woff2");
+	font-display: swap;
 }

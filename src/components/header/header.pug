@@ -1,23 +1,23 @@
-+include-style('header')
-+include-script('header')
 
-//header.header
+
 header.header
-	.container
-		.header-inner
-			.header-inner__logo
-				img(src=PATH+'images/img.png')
-			.header-menu
-				a(href="#services").header-menu__item
-					span Строительство и ремонт
-				a(href="#roof").header-menu__item
-					span Доборные элементы
-				//-a(href="#").header-menu__item
-					span Доборные элементы
-				a(href="#rent").header-menu__item
-					span Аренда спецтехники
+	.header-top
+		.header-top__logo
+			img(src=PATH + 'images/logo.png')
+		.header-top__mid
+			picture
+				source(srcset=PATH + "images/notes.svg" media="(min-width: 768px)")
+				source(srcset=PATH + "images/notes-mob.svg" media="(min-width: 0)")
+				img(src=PATH + 'images/notes.svg')
+		.header-top__title
+			span ПРАЗДНИЧНЫЕ КОНЦЕРТЫ
+			span.color 2014-2024 годы
 
-
-			.header-contacts
-				.btn.btn--primary
-					span Связаться с нами
+		.header-top__right
+			img(src=PATH + 'images/right.png')
+		.header-top__line
+	.header-mob
+		.top ПРАЗДНИЧНЫЕ КОНЦЕРТЫ
+		.bottom
+			span
+			span.color 2014-2024 годы

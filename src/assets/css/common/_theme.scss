@@ -1,8 +1,13 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 :root {
-	--base-color: #f6a936;
-	--base-color-hover: #809dff;
+	--base-green: #006332;
+	--base-green-l: #3DA93C;
+	--base-red: #8B231D;
+	--base-red-l: #DF1E24;
+
+
+	--grad-l:linear-gradient(90deg, #FFE0B3 0%, #FFF6EA 100%);
 	--text-color: #999999;
 	--text-color-black: #232323;
 	--bg-card: #fafafa;

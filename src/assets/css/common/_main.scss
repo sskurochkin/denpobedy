@@ -9,16 +9,19 @@ html {
 	background: #ffffff;
 	font-family: $f-main;
 	font-style: normal;
-	line-height: 1.3;
+	line-height: 1.4;
 	scroll-behavior: smooth;
 	font-size: 10px;
 	@media (max-width: $lg - 1) {
-		font-size: .73vw;
+		font-size: .55vw;
+	}
+	@media (max-width: $sm - 1) {
+		font-size: 6.5px;
 	}
 }
 
 body {
-	font-size: 1.6rem;
+	font-size: 1.8rem;
 	fill: transparent;
 	color: var(--text-color-black);
 
@@ -46,8 +49,8 @@ body {
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	max-width: 100vw;
 	min-height: 100vh;
+	max-width: 1920px;
 }
 
 .main {

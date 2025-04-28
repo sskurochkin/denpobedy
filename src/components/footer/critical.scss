@@ -1,52 +1,49 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 .footer {
-	margin-top: var(--section-margin);
-	background: #242424;
-	color: var(--bg-card);
-	padding: calc(var(--section-margin) / 2) 0;
-	a{
-		color: var(--bg-card);
-	}
-	&__title{
-		font-size: 2.2rem;
-		margin-bottom: 1.2rem;
+	padding: 8rem 0 4rem;
+	@media (max-width: $sm - 1) {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		padding: 80px 10vw 80px 20px;
+		gap: 20px;
+		&-wrap{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
 	}
 }
 
 .footer-inner{
 	display: flex;
-	justify-content: space-between;
-	&__left{
-		font-weight: 600;
-		font-size: 2.4rem;
+	justify-content: center;
+	gap: 2rem;
+	align-items: flex-end;
+	color: #ffffff;
+	font-size: 2.4rem;
+	@media (max-width: $sm - 1) {
+		flex-direction: column;
 	}
-
 }
-
-.footer-social{
-	display: flex;
-	gap: 1.2rem;
-	margin-bottom: 1.2rem;
-	&__item{
-		fill: var(--bg-card);
-		&:hover {
-			@media (hover: hover) {
-				cursor: pointer;
-				fill: var(--base-color-hover);
-
-			}
-		}
+.footer-text{
+	margin-bottom:1rem;
+	@media (max-width: $sm - 1) {
+		font-size: 12px;
 	}
 }
 
-.footer-link{
-	margin-bottom: 1.2rem;
-	display: flex;
-	gap: 0.6rem;
-	fill: var(--bg-card);
-	svg{
-		max-width: 2rem;
-		max-height: 2rem;
+.footer-logo{
+	max-width: 27rem;
+}
+
+.footer-mob{
+	@media (min-width: $sm) {
+		display: none;
 	}
+
+	width: 120px;
+	height: 86px;
 }
