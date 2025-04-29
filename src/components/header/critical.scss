@@ -34,8 +34,8 @@ body.overflow {
 		z-index: 10;
 		@media (max-width: $sm - 1) {
 			height: 130px;
-			width: 140px;
-			left: 10px;
+			width: 135px;
+			left: 5px;
 			top: 5px;
 		}
 		img{
@@ -55,7 +55,9 @@ body.overflow {
 		overflow: hidden;
 
 		@media (max-width: $sm - 1) {
-			display: none;
+			right: 5px;
+			left: auto;
+			width: 256px;
 		}
 		//height: 3rem;
 		picture{
@@ -142,6 +144,7 @@ body.overflow {
 	.bottom{
 		display: grid;
 		grid-template-columns: 33% 1fr;
+		font-size: 16px;
 		span{
 			background-color: var(--base-red);
 		}

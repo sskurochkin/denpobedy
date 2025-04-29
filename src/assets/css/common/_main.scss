@@ -18,6 +18,9 @@ html {
 	@media (max-width: $sm - 1) {
 		font-size: 6.5px;
 	}
+	@media (max-width: $xs - 1) {
+		font-size: 6.7px;
+	}
 }
 
 body {

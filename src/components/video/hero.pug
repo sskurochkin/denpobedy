@@ -22,19 +22,20 @@ include ../vars/vars
 						+splide({
 							mod: 'js-splide-video video-slider'
 						})
-							each x, z in [1,2]
+							each x, z in [1,2,3,4]
 								li.splide__slide
 									img(src=PATH + `images/video-${index+1}/${x}.jpg` loading="lazy")
 					.video-item__content
 						.video-item__title=i.title
-				.video-item__footer(x-data="{open: false}" @click.outside="open=false" :class="open && 'active'")
-					.video-item__trigger(@click="open=!open")
-						span подробнее...
-						<svg class="icon" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M7.5 13L14.8612 0.25H0.138784L7.5 13Z" fill="white"/>
-						</svg>
+				if (i.text)
+					.video-item__footer(x-data="{open: false}" @click.outside="open=false" :class="open && 'active'")
+						.video-item__trigger(@click="open=!open")
+							span подробнее...
+							<svg class="icon" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.5 13L14.8612 0.25H0.138784L7.5 13Z" fill="white"/>
+							</svg>
 
-					.video-item__list(x-show="open" x-transition)=i.title
+						.video-item__list(x-show="open" x-transition)=i.text
 
 
 	include ../footer/footer
