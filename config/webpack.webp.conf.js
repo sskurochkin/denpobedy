@@ -1,56 +1,72 @@
 const Imagemin = require('imagemin');
-const webp = require("imagemin-webp");
+const webp = require('imagemin-webp');
 const path = require('path');
 const fs = require('fs');
-const { glob } = require('glob');
+const { promisify } = require('util');
+
+const readdir = promisify(fs.readdir);
+const stat = promisify(fs.stat);
+const copyFile = promisify(fs.copyFile);
+const unlink = promisify(fs.unlink);
+const mkdir = promisify(fs.mkdir);
+
+async function findFiles(dir, extensions) {
+	const items = await readdir(dir);
+	const files = await Promise.all(items.map(async (item) => {
+		const fullPath = path.join(dir, item);
+		const isDir = (await stat(fullPath)).isDirectory();
+		return isDir ? findFiles(fullPath, extensions) : fullPath;
+	}));
+	return files
+		.flat()
+		.filter(file => extensions.includes(path.extname(file).toLowerCase()));
+}
 
 (async () => {
 	try {
-		// 1. Рекурсивно находим все изображения
-		const imagePaths = await glob('../src/assets/images/**/*.{jpg,png}', {
-			ignore: '**/*.webp',
-			nodir: true
-		});
-
-		// 2. Создаем временные файлы с двойным расширением
-		for (const imagePath of imagePaths) {
-			const ext = path.extname(imagePath);
-			const newPath = `${imagePath}${ext}`;
-			await fs.promises.copyFile(imagePath, newPath);
-		}
-
-		// 3. Конвертируем в WebP с правильным указанием destination
-		const filesToConvert = await glob('../src/assets/images/**/*.{jpg,png}.{jpg,png}');
-
-		for (const file of filesToConvert) {
-			const relativePath = path.relative('../src/assets/images', path.dirname(file));
-			const outputDir = path.resolve(__dirname, '../html/images', relativePath);
+		// 1. Находим все изображения
+		const images = await findFiles(
+			path.resolve(__dirname, '../src/assets/images'),
+			['.jpg', '.png']
+		);
 
 
-			console.log(`Обрабатываю: ${file} -> ${outputDir}`);
-			// Создаем целевую директорию, если ее нет
-			await fs.promises.mkdir(outputDir, { recursive: true });
+		// 2. Создаем временные копии
+		await Promise.all(images.map(async (img) => {
+			await copyFile(img, `${img}${path.extname(img)}`);
+		}));
+
+		// 3. Конвертируем в WebP
+		const tempFiles = await findFiles(
+			path.resolve(__dirname, '../src/assets/images'),
+			['.jpg.jpg', '.png.png']
+		);
+
+		for (const file of tempFiles) {
+
+			const outputDir = path.resolve(
+				__dirname,
+				'../html/assets/images',
+				path.relative(
+					path.resolve(__dirname, '../src/assets/images'),
+					path.dirname(file)
+				)
+			);
+
+			await mkdir(outputDir, { recursive: true });
 
 			await Imagemin([file], {
-				destination: outputDir, // Теперь это строка, а не функция
-				plugins: [
-					webp({
-						quality: 90,
-						metadata: 'all'
-					})
-				]
+				destination: outputDir,
+				plugins: [webp({ quality: 90 })]
 			});
 		}
 
 		// 4. Удаляем временные файлы
-		const tempFiles = await glob('../src/assets/images/**/*.{jpg,png}.{jpg,png}');
-		for (const file of tempFiles) {
-			await fs.promises.unlink(file);
-		}
+		await Promise.all(tempFiles.map(file => unlink(file)));
 
-		console.log('✅ Конвертация в WebP успешно завершена!');
-	} catch (error) {
-		console.error('❌ Ошибка при конвертации:', error);
+		console.log('WebP конвертация завершена успешно!');
+	} catch (err) {
+		console.error('Ошибка:', err);
 		process.exit(1);
 	}
 })();

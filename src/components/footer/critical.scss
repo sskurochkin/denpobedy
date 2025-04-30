@@ -6,7 +6,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		padding: 80px 10vw 80px 20px;
+		padding: 50px 11vw 50px 20px;
 		gap: 20px;
 		&-wrap{
 			display: flex;
@@ -26,17 +26,23 @@
 	font-size: 2.4rem;
 	@media (max-width: $sm - 1) {
 		flex-direction: column;
+		align-items: center;
 	}
 }
 .footer-text{
 	margin-bottom:1rem;
 	@media (max-width: $sm - 1) {
 		font-size: 12px;
+		text-align: center;
+		//max-width: 110px;
 	}
 }
 
 .footer-logo{
 	max-width: 27rem;
+	@media (max-width: $sm - 1) {
+		max-width: 153px;
+	}
 }
 
 .footer-mob{
@@ -44,6 +50,6 @@
 		display: none;
 	}
 
-	width: 120px;
-	height: 86px;
+	width: 153px;
+	height: 110px;
 }
