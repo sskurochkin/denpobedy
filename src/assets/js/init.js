@@ -140,7 +140,7 @@ const uiInits = {
 									rewind: true,
 									speed: 1000,
 									autoplay: true, // Автопрокрутка
-									interval: 3000,
+									interval: 4000,
 									drag: false,
 									pagination: false,
 									arrows: false,
@@ -191,7 +191,7 @@ const uiInits = {
 					if(index){
 						this.$nextTick(()=>{
 							this.playVideo(index-1)
-							// window.history.pushState({}, '', window.location.pathname)
+							window.history.pushState({}, '', window.location.pathname)
 						})
 
 					}
