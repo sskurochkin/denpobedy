@@ -204,7 +204,8 @@ const uiInits = {
 
 		})
 
-	}
+	},
+
 };
 
 export default uiInits

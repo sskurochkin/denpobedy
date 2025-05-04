@@ -260,7 +260,7 @@
 .info-block{
 	margin-top: 50px;
 	@media (max-width: $sm - 1) {
-		grid-template-columns: 33% 1fr;
+		//grid-template-columns: 33% 1fr;
 		margin-top: 16px;
 	}
 
@@ -279,12 +279,12 @@
 		}
 	}
 	&__list{
-		color: #ffffff;
+		color: var(--base-red);
 		font-size: 2.4rem;
-		padding-left: 4rem;
-		padding-right: 10rem;
+		background: var(--grad-l);
+		padding: 4rem 10rem 4rem 4rem;
 		@media (max-width: $sm - 1) {
-			padding-right: 20px;
+			padding-right: 16px;
 			padding-left: 16px;
 			font-size: 14px;
 		}
