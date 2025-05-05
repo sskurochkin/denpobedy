@@ -157,6 +157,25 @@
 		}
 	}
 
+	&__imgs{
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		img{
+			opacity: 0;
+			visibility: hidden;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: all 1s ease-in-out;
+			&.active{
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
 	&__content {
 		font-size: 3rem;
 		padding: 1rem 0 0;

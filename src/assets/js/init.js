@@ -100,8 +100,6 @@ const uiInits = {
 	fancy: function (){
 		window.addEventListener('alpine:init', function () {
 
-
-
 			Alpine.data('videos', () => ({
 				options: {
 					rootMargin: '100px',
@@ -118,7 +116,8 @@ const uiInits = {
 				},
 
 				sliders(){
-					const sliders = document.querySelectorAll('.js-splide-video')
+					// const sliders = document.querySelectorAll('.js-splide-video')
+					const sliders = document.querySelectorAll('.js-imgs')
 
 
 					const config = {
@@ -135,22 +134,23 @@ const uiInits = {
 									return
 								}
 
-								let splideRoof = new Splide(el.target, {
-									type: 'fade',
-									rewind: true,
-									speed: 1000,
-									autoplay: true, // Автопрокрутка
-									interval: 4000,
-									drag: false,
-									pagination: false,
-									arrows: false,
-									breakpoints: {
-										990:{
+								const slides = el.target.querySelectorAll('img');
+								let currentSlide = 0;
 
-										}
-									}
+								function nextSlide() {
+									// Скрываем текущий слайд
+									slides[currentSlide].classList.remove('active');
 
-								}).mount()
+									// Переходим к следующему слайду
+									currentSlide = (currentSlide + 1) % slides.length;
+
+									// Показываем новый слайд
+									slides[currentSlide].classList.add('active');
+								}
+
+								// Запускаем автоматическую смену слайдов каждые 4 секунды
+								setInterval(nextSlide, 4000);
+
 								el.target.classList.add('inited');
 
 							}
@@ -159,7 +159,6 @@ const uiInits = {
 
 
 					sliders.forEach(el=>{
-
 						sliderObserver.observe(el)
 					})
 
